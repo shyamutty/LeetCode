@@ -1,26 +1,15 @@
 https://leetcode.com/problems/two-sum/
 
-public int[] TwoSum(int[] nums, int target)
-{
-    var ret = new int[2] { -1, -1 };
-    if (nums == null || nums.Length <= 1) return ret;
-
-    Dictionary<int, int> cache = new Dictionary<int, int>();            
-    for (int i = 0; i < nums.Length; i++)
-    {
-        if(cache.ContainsKey(target - nums[i]))
+ public int[] TwoSum(int[] nums, int target) {
+        Dictionary<int, int> numDict = new Dictionary<int,int>();
+        for(int i = 0; i < nums.Length; i++)
         {
-            ret[0] = cache[target - nums[i]];
-            ret[1] = i;
-            break;
-        }
-        else
-        {
-            if (!cache.ContainsKey(nums[i]))
+            int complement = target - nums[i];
+            if(numDict.ContainsKey(complement))
             {
-                cache.Add(nums[i], i);
+               return new int[] {numDict[complement], i};
             }
+            numDict.Add(nums[i],i);
         }
+        return new int[] {0,0};
     }
-    return ret;
-}
