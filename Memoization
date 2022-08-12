@@ -1,5 +1,10 @@
 Memoization with Fibonacci example
 
+Memoization is a term that describes a specialized form of caching related to caching output values of a deterministic function
+based on its input values. The key here is a deterministic function, which is a function that will return the same output based 
+on a given input. This is true of the Fibonacci function shown above. It will always return the same output based on the input.
+
+
 //Normal recursive call
 class Program
 {
