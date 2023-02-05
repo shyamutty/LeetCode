@@ -14,7 +14,7 @@ class Solution {
         int[] countmap = new int[26];
 
         for (int i = 0; i < lengthS1; i++)
-            countmap[s1[i] - 97]++;
+            countmap[s1[i] - 97]++; //ascii value of a is 97
 
 
         int[] bCount = new int[26];
@@ -22,7 +22,7 @@ class Solution {
         for (int i = 0; i < lengthS2; i++) {
             bCount[s2[i] - 97]++;
 
-            if (i >= (lengthS1 - 1)) {
+            if (i >= (lengthS1 - 1)) { //sliding window happens here
                 if (allZero(countmap, bCount))
                     return true;
 
