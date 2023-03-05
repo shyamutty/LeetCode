@@ -6,3 +6,5 @@ while (lastDigit !=0){
     result = result * 10 + lastDigit;
 }
 return result;
+
+//https://www.youtube.com/watch?v=69jsFIMINpI&list=PLUcsbZa0qzu3yNzzAxgvSgRobdUUJvz7p&index=6
