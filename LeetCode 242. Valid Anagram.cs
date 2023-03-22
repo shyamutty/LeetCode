@@ -1,3 +1,37 @@
+public bool IsAnagram(string s, string t)
+{
+    if (s.Length != t.Length) {
+        return false;
+    }
+
+    Dictionary<char, int> charCounts = new Dictionary<char, int>();
+    foreach (char c in s) {
+        if (charCounts.ContainsKey(c)) {
+            charCounts[c]++;
+        } else {
+            charCounts.Add(c, 1);
+        }
+    }
+    foreach (char c in t) {
+        if (charCounts.ContainsKey(c)) {
+            charCounts[c]--;
+            if (charCounts[c] < 0) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+
+
+
+//Another way
+
 public class Solution
     {
         public bool IsAnagram(string s, string t)
@@ -35,42 +69,5 @@ public class Solution
         }
     }
 
-//Another way, bad way of doing
-public class Solution
-    {
-        public bool IsAnagram(string s, string t)
-        {
-            Dictionary<int, int> sDict = new Dictionary<int, int>();
-            Dictionary<int, int> tDict = new Dictionary<int, int>();
 
-            if(s.Length != t.Length)
-                return false;
-
-            for (int i = 0; i< s.Length; i++)
-            {
-                if(!sDict.ContainsKey(s[i]))
-                    sDict.Add(s[i],1);
-                else
-                    sDict[s[i]] = sDict[s[i]]+1;
-                
-                if(!tDict.ContainsKey(t[i]))
-                    tDict.Add(t[i],1);
-                else
-                    tDict[t[i]] += 1;
-            }
-
-            IEnumerator<int> keyEnumerator = sDict.Keys.GetEnumerator();
-
-            while (keyEnumerator.MoveNext())
-            {
-                int key = keyEnumerator.Current;
-                if(tDict.ContainsKey(key) && tDict[key] == sDict[key])
-                {}
-                else
-                    return false;
-            }
-
-            return true;
-        }
-    }
 
