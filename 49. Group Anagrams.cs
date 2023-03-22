@@ -17,3 +17,18 @@ public class Solution {
 }
 
 //https://www.youtube.com/watch?v=vzdNOK2oB2E
+//Easy Way
+
+public IList<IList<string>> GroupAnagrams(string[] strs) {
+    var groups = new Dictionary<string, List<string>>();
+    foreach (string s in strs) {
+        char[] chars = s.ToCharArray();
+        Array.Sort(chars);
+        string sorted = new string(chars);
+        if (!groups.ContainsKey(sorted)) {
+            groups[sorted] = new List<string>();
+        }
+        groups[sorted].Add(s);
+    }
+    return groups.Values.ToList();
+}
