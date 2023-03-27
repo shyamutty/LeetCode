@@ -39,3 +39,30 @@ public class Solution {
         return new int[] {0,0};
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public int[] TwoSum(int[] nums, int target) {
+    Dictionary<int, int> map = new Dictionary<int, int>(); // initialize a dictionary to store each element and its index
+    
+    for (int i = 0; i < nums.Length; i++) { // iterate over each element in the input array
+        int complement = target - nums[i]; // calculate the complement of the current element
+        
+        if (map.ContainsKey(complement)) { // if the complement is already in the dictionary
+            return new int[] { map[complement], i }; // return its index and the current index as an array
+        }
+        
+        map[nums[i]] = i; // add the current element and its index to the dictionary
+    }
+    
+    return new int[] { -1, -1 }; // if no pair of elements add up to the target, return {-1, -1}
+}
+
+
+/*
+This solution uses a dictionary to store each element of the input array and its index for efficient lookup. 
+It then iterates over each element in the input array and calculates its complement with respect to the target value. 
+If the complement is already in the dictionary, it means that a pair of elements that add up to the target has been found, 
+so it returns the indices of the two elements as an array. Otherwise, it adds the current element and its index to the dictionary. 
+If no pair of elements adds up to the target, it returns {-1, -1}.
+*/
