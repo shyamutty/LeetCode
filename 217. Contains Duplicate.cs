@@ -1,34 +1,45 @@
+//https://leetcode.com/problems/contains-duplicate/
+/*
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+Example 1:
 
-//Using Dictionary
-public class Solution {
-    public bool ContainsDuplicate(int[] nums) {
-        Dictionary<int, int> numDict = new Dictionary<int, int>();
-        
-        for(int i = 0; i< nums.Length;i++)
-        {
-            if(numDict.ContainsKey(nums[i]))
-                return true;
-            numDict.Add(nums[i], 1);
+Input: nums = [1,2,3,1]
+Output: true
+
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: false
+
+Example 3:
+
+Input: nums = [1,1,1,3,3,4,3,2,4,2]
+Output: true
+
+Constraints:
+
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+*/
+
+public bool ContainsDuplicate(int[] nums) {
+    HashSet<int> set = new HashSet<int>(); // initialize a hash set to store unique elements
+    
+    foreach (int num in nums) { // iterate over each element in the input array
+        if (set.Contains(num)) { // if the element is already in the set, return true
+            return true;
         }
-
-        return false;
+        
+        set.Add(num); // otherwise, add the element to the set
     }
+    
+    return false; // if no duplicate is found, return false
 }
 
-
-//Using Hashset, Note: HasSet in C# is faster by 99%
-public class Solution {
-    public bool ContainsDuplicate(int[] nums) {
-        HashSet<int> numHashSet = new HashSet<int>();
-        
-        for(int i = 0; i< nums.Length;i++)
-        {
-            if(numHashSet.Contains(nums[i]))
-                return true;
-            numHashSet.Add(nums[i]);
-        }
-
-        return false;
-    }
-}
+/*
+This solution uses a hash set to store unique elements in the input array. 
+It iterates over each element in the input array and checks if it is already in the set. 
+If the element is already in the set, it means that there is a duplicate, so it returns true. Otherwise, it adds the element to the set. 
+If no duplicate is found, it returns false.
+*/
 
