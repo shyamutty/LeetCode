@@ -36,31 +36,6 @@ Output: 58
 Explanation: L = 50, V= 5, III = 3.
 */
 
-public class Solution {
-    public int RomanToInt(string s) {
-        Dictionary<char,int> numDictionary = new Dictionary<char,int>();
-        numDictionary.Add('I',1);
-        numDictionary.Add('V',5);
-        numDictionary.Add('X',10);
-        numDictionary.Add('L',50);
-        numDictionary.Add('C',100);
-        numDictionary.Add('D',500);
-        numDictionary.Add('M',1000);
-        
-        int result = numDictionary[s[s.Length-1]];
-        for(int i = s.Length - 2; i>= 0; i--)
-        {
-            if(numDictionary[s[i]] < numDictionary[s[i+1]])
-                result -= numDictionary[s[i]];
-            else
-                result += numDictionary[s[i]];
-        }
-        return result;
-    }
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 public int RomanToInt(string s) {
     Dictionary<char, int> map = new Dictionary<char, int> { // initialize a dictionary to map each Roman numeral to its integer value
         {'I', 1},
@@ -93,3 +68,5 @@ It then iterates over each character in the input string and looks up its intege
 If the next Roman numeral has a higher value, it subtracts the current value from the result. 
 Otherwise, it adds the current value to the result. The final result is returned at the end.
 */
+
+
