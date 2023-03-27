@@ -37,7 +37,8 @@ public int Rob(int[] nums) {
     for (int i = 0; i < nums.Length; i++) { // iterate over each house in the input array
         int temp = currMax; // temporarily store the current maximum amount
         
-        currMax = Math.Max(prevMax + nums[i], currMax); // update the current maximum amount based on the maximum of the previous maximum amount plus the current house and the current maximum amount
+        currMax = Math.Max(prevMax + nums[i], currMax); // update the current maximum amount based on the maximum of the previous maximum amount plus 
+                                                        //the current house and the current maximum amount
         prevMax = temp; // update the previous maximum amount to the previous current maximum amount
     }
     
